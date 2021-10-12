@@ -190,7 +190,6 @@ namespace EnkelAppliceradProgrammering2
 
 
                 text = string.Format(text, Kim, Alex, hours);
-                Console.WriteLine(text);
 
 
 
@@ -220,22 +219,47 @@ namespace EnkelAppliceradProgrammering2
                  * Uppgift 1
                  * https://docs.google.com/document/d/1pCzvPGhbw5drESKos6mhW4BJm34NPaVgO6F_ZlAB4Aw/edit#heading=h.3ncfbn5c0hz9
                 */
-                string text = "Den {0}:e {1}, {2} så är temperaturen {3}°F på en station som är {4} över havsnivån.";
+                string text = "Den {0}:e {1}, {2} så är temperaturen {3}°F på en station som är {4} feet över havsnivån.";
+                int meter = 150;
+                int celsius = 27;
                 int tidTimme = 13;
                 int tidMinut = 30;
+                bool överTolv = false;
 
                 string tidString = "";
+
 
                 if (tidTimme > 12)
                 {
                     tidTimme = tidTimme - 12;
                     tidString= tidTimme.ToString();
-                    Console.WriteLine(tidString);
+                    överTolv = true;
                 }
-                
+                else
+                {
+                    tidString = tidTimme.ToString();
+                }
+                tidString = string.Concat(tidString + "." + tidMinut);
+                if (överTolv == true)
+                {
+                    tidString = string.Concat(tidString + "pm");
+                }
+                else
+                {
+                    tidString = string.Concat(tidString + "am");
+                }
+
+                //celsius till fahrenheit
+                int fahrenheit = (int)(celsius * 1.8 + 32);
+
+                //meter till feet
+                int feet = (int)(meter * 3.28);
+
+
+                text = string.Format(text, "12", "juni", tidString,fahrenheit, feet);
 
                 // Ersätt allt på högersidan med ditt resultat
-                ANSWER = "INSERT YOUR ANSWER HERE";
+                ANSWER = text;
             }
 
             public void Task2()
@@ -244,12 +268,54 @@ namespace EnkelAppliceradProgrammering2
                  * Uppgift 2
                  * https://docs.google.com/document/d/1pCzvPGhbw5drESKos6mhW4BJm34NPaVgO6F_ZlAB4Aw/edit#heading=h.uas1xhykx4zf
                  */
+                string text = "Den {0}:e {1}, {2} så är temperaturen {3}°F på en station som är {4} feet över havsnivån.";
+                bool överTolv = false;
+                string tidString = "";
 
+                Console.SetCursorPosition(0, 34);
+                Console.WriteLine("Vilken dag är det?");
+                string dag = Console.ReadLine();
+                Console.WriteLine("Vilken tid är det?");
+                string tid24 = Console.ReadLine();
+                Console.WriteLine("Vilken temperatur är det?");
+                int celsius = int.Parse(Console.ReadLine());
+                Console.WriteLine("Hur högt över hav är mätaren?");
+                int meter = int.Parse(Console.ReadLine());
 
+                string tidTimmeString = string.Concat(tid24[1], tid24[2]);
+                string tidMinutString = string.Concat(tid24[3], tid24[4]);
+                int tidTimme = int.Parse(tidTimmeString);
+                int tidMinut = int.Parse(tidMinutString);
 
+                if (tidTimme > 12)
+                {
+                    tidTimme = tidTimme - 12;
+                    tidString = tidTimme.ToString();
+                    överTolv = true;
+                }
+                else
+                {
+                    tidString = tidTimme.ToString();
+                }
+                tidString = string.Concat(tidString + "." + tidMinut);
+                if (överTolv == true)
+                {
+                    tidString = string.Concat(tidString + "pm");
+                }
+                else
+                {
+                    tidString = string.Concat(tidString + "am");
+                }
 
-                // Ersätt allt på högersidan med ditt resultat
-                ANSWER = "INSERT YOUR ANSWER HERE";
+                //celsius till fahrenheit
+                int fahrenheit = (int)(celsius * 1.8 + 32);
+
+                //meter till feet
+                int feet = (int)(meter * 3.28);
+
+                text = string.Format(text, dag, "juni", tidString, fahrenheit, feet);
+
+                ANSWER = text;
             }
         }
 
