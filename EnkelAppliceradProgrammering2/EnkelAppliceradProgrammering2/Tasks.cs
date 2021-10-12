@@ -282,7 +282,7 @@ namespace EnkelAppliceradProgrammering2
                 Console.WriteLine("Hur högt över hav är mätaren?");
                 int meter = int.Parse(Console.ReadLine());
 
-                string tidTimmeString = string.Concat(tid24[1], tid24[2]);
+                string tidTimmeString = string.Concat(tid24[0], tid24[1]);
                 string tidMinutString = string.Concat(tid24[3], tid24[4]);
                 int tidTimme = int.Parse(tidTimmeString);
                 int tidMinut = int.Parse(tidMinutString);
@@ -290,21 +290,17 @@ namespace EnkelAppliceradProgrammering2
                 if (tidTimme > 12)
                 {
                     tidTimme = tidTimme - 12;
-                    tidString = tidTimme.ToString();
                     överTolv = true;
                 }
-                else
-                {
-                    tidString = tidTimme.ToString();
-                }
-                tidString = string.Concat(tidString + "." + tidMinut);
+
+                tidString = string.Concat(tidTimme + "." + tidMinut);
                 if (överTolv == true)
                 {
-                    tidString = string.Concat(tidString + "pm");
+                    tidString = string.Concat(tidTimme + "pm");
                 }
                 else
                 {
-                    tidString = string.Concat(tidString + "am");
+                    tidString = string.Concat(tidTimme + "am");
                 }
 
                 //celsius till fahrenheit
